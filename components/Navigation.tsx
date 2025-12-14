@@ -40,12 +40,23 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-4"
           >
-            <Heart className="w-8 h-8 text-primary-600" fill="currentColor" />
-            <span className="text-2xl font-bold text-gray-900">
-              Jagrik Foundation
-            </span>
+            <div className="flex items-center space-x-2">
+              <Heart className="w-8 h-8 text-primary-600" fill="currentColor" />
+              <span className="text-2xl font-bold text-gray-900">
+                Jagrik Foundation
+              </span>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full"
+            >
+              <Heart className="w-4 h-4" fill="currentColor" />
+              <span className="text-sm font-semibold">Making a Difference</span>
+            </motion.div>
           </motion.div>
 
           {/* Desktop Navigation */}
