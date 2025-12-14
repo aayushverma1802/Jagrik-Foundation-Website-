@@ -164,7 +164,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-            className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[550px] mt-4 sm:mt-8 lg:mt-8"
+            className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[450px] xl:h-[550px] mt-4 sm:mt-8 lg:mt-8 mb-16 sm:mb-0"
           >
             <EnhancedVisual />
           </motion.div>
@@ -176,15 +176,15 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className="flex flex-col items-center space-y-2 text-gray-600"
         >
-          <span className="text-sm font-medium">Scroll to explore</span>
-          <ArrowDown className="w-6 h-6" />
+          <span className="text-xs sm:text-sm font-medium">Scroll to explore</span>
+          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6" />
         </motion.div>
       </motion.div>
     </section>
