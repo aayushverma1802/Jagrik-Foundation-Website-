@@ -105,18 +105,30 @@ export default function About() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -10,
+                  rotateY: 5,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden group"
               >
-                <div
-                  className={`${feature.bgColor} w-16 h-16 rounded-full flex items-center justify-center mb-6`}
+                {/* Hover gradient effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-primary-50 to-accent-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={false}
+                />
+                <motion.div
+                  className={`${feature.bgColor} w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10`}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6, type: "spring" }}
                 >
                   <Icon className={`w-8 h-8 ${feature.color}`} />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 relative z-10">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed relative z-10">
                   {feature.description}
                 </p>
               </motion.div>

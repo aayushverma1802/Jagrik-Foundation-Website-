@@ -128,21 +128,35 @@ export default function Impact() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center"
+                whileHover={{ 
+                  scale: 1.15, 
+                  rotate: 5,
+                  y: -10,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
+                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center relative overflow-hidden group cursor-pointer"
               >
-                <div
-                  className={`${stat.bgColor} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6`}
+                {/* Hover glow effect */}
+                <motion.div
+                  className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                  initial={false}
+                />
+                <motion.div
+                  className={`${stat.bgColor} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10`}
+                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  transition={{ duration: 0.6, type: "spring" }}
                 >
                   <Icon className={`w-8 h-8 ${stat.color}`} />
-                </div>
-                <Counter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  className="text-5xl font-bold text-white mb-2"
-                />
-                <div className="text-white/90 text-lg font-medium">
-                  {stat.label}
+                </motion.div>
+                <div className="relative z-10">
+                  <Counter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    className="text-5xl font-bold text-white mb-2"
+                  />
+                  <div className="text-white/90 text-lg font-medium">
+                    {stat.label}
+                  </div>
                 </div>
               </motion.div>
             );

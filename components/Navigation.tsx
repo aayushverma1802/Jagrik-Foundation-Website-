@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Heart } from "lucide-react";
+import { smoothScrollTo } from "@/utils/smoothScroll";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,21 +54,41 @@ export default function Navigation() {
               <motion.a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo(item.href.replace("#", ""));
+                }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400 }
+                }}
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors relative group cursor-pointer"
               >
                 {item.name}
+                <motion.span
+                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"
+                  initial={false}
+                />
               </motion.a>
             ))}
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                transition: { type: "spring", stiffness: 400 }
+              }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-primary-700 transition-colors"
+              className="bg-primary-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-primary-700 transition-all relative overflow-hidden group"
             >
-              Donate Now
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                initial={false}
+              />
+              <span className="relative z-10">Donate Now</span>
             </motion.button>
           </div>
 

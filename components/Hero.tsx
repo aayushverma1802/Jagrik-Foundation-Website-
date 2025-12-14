@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Heart, Shield } from "lucide-react";
-import ProfessionalVisual from "./ProfessionalVisual";
+import EnhancedVisual from "./EnhancedVisual";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -83,13 +83,23 @@ export default function Hero() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
             >
               Supporting{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">
-                Dogs
-              </span>{" "}
-              &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-primary-600">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 inline-block"
+              >
                 Mental Health
-              </span>
+              </motion.span>{" "}
+              &{" "}
+              <motion.span
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-accent-600 to-primary-600 inline-block"
+              >
+                Community
+              </motion.span>
             </motion.h1>
 
             <motion.p
@@ -110,12 +120,22 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2"
+                className="bg-primary-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-primary-700 transition-all flex items-center justify-center space-x-2 relative overflow-hidden group"
               >
-                <span>Donate Now</span>
-                <Heart className="w-5 h-5" fill="currentColor" />
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={false}
+                />
+                <span className="relative z-10">Donate Now</span>
+                <motion.div
+                  className="relative z-10"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Heart className="w-5 h-5" fill="currentColor" />
+                </motion.div>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -148,14 +168,14 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Professional Visual */}
+          {/* Right Enhanced Visual */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: 50, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
             className="relative h-[400px] sm:h-[500px] lg:h-[600px] mt-8 lg:mt-0"
           >
-            <ProfessionalVisual />
+            <EnhancedVisual />
           </motion.div>
         </div>
       </div>
