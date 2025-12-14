@@ -128,26 +128,24 @@ export default function EnhancedVisual() {
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Floating Icons with Stagger Animation */}
+        {/* Enhanced Floating Icons with Perfect Circular Alignment */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="absolute inset-0"
+          className="absolute inset-0 flex items-center justify-center"
         >
           {[
-            { icon: Users, position: "top", delay: 0 },
-            { icon: TrendingUp, position: "right", delay: 0.2 },
-            { icon: Award, position: "bottom", delay: 0.4 },
-            { icon: Target, position: "left", delay: 0.6 },
+            { icon: Users, angle: 0, delay: 0 },      // Top (12 o'clock)
+            { icon: TrendingUp, angle: 90, delay: 0.2 },   // Right (3 o'clock)
+            { icon: Award, angle: 180, delay: 0.4 },      // Bottom (6 o'clock)
+            { icon: Target, angle: 270, delay: 0.6 },      // Left (9 o'clock)
           ].map((item, index) => {
             const Icon = item.icon;
-            const positions = {
-              top: "top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-              right: "right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2",
-              bottom: "bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2",
-              left: "left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2",
-            };
+            const radius = 140; // Distance from center
+            const angleRad = (item.angle * Math.PI) / 180;
+            const x = Math.cos(angleRad) * radius;
+            const y = Math.sin(angleRad) * radius;
 
             return (
               <motion.div
@@ -160,17 +158,18 @@ export default function EnhancedVisual() {
                   stiffness: 200,
                   damping: 15,
                 }}
-                className={`absolute ${positions[item.position as keyof typeof positions]}`}
+                className="absolute"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                }}
               >
                 <motion.div
                   whileHover={{ scale: 1.15, rotate: 5 }}
                   animate={{
-                    y: item.position === "top" || item.position === "bottom"
-                      ? [0, -15, 0]
-                      : [0, 0, 0],
-                    x: item.position === "left" || item.position === "right"
-                      ? [0, item.position === "right" ? 15 : -15, 0]
-                      : [0, 0, 0],
+                    y: [0, -10, 0],
+                    x: [0, 0, 0],
                   }}
                   transition={{
                     duration: 3 + index * 0.5,
@@ -193,32 +192,42 @@ export default function EnhancedVisual() {
           })}
         </motion.div>
 
-        {/* Enhanced Connecting Lines with Animation */}
+        {/* Enhanced Connecting Lines with Perfect Alignment */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
           {[
-            { x1: "50%", y1: "0%", x2: "50%", y2: "50%", delay: 1 },
-            { x1: "100%", y1: "50%", x2: "50%", y2: "50%", delay: 1.2 },
-            { x1: "50%", y1: "100%", x2: "50%", y2: "50%", delay: 1.4 },
-            { x1: "0%", y1: "50%", x2: "50%", y2: "50%", delay: 1.6 },
-          ].map((line, i) => (
-            <motion.line
-              key={i}
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.3 }}
-              transition={{
-                duration: 2,
-                delay: line.delay,
-                ease: "easeInOut",
-              }}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              stroke="#3b82f6"
-              strokeWidth="2"
-              strokeDasharray="8,4"
-            />
-          ))}
+            { angle: 0, delay: 1 },      // Top
+            { angle: 90, delay: 1.2 },   // Right
+            { angle: 180, delay: 1.4 },  // Bottom
+            { angle: 270, delay: 1.6 },  // Left
+          ].map((line, i) => {
+            const radius = 140;
+            const centerRadius = 36; // Half of inner circle (72px / 2)
+            const angleRad = (line.angle * Math.PI) / 180;
+            const startX = 200 + Math.cos(angleRad) * centerRadius;
+            const startY = 200 + Math.sin(angleRad) * centerRadius;
+            const endX = 200 + Math.cos(angleRad) * radius;
+            const endY = 200 + Math.sin(angleRad) * radius;
+
+            return (
+              <motion.line
+                key={i}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.3 }}
+                transition={{
+                  duration: 2,
+                  delay: line.delay,
+                  ease: "easeInOut",
+                }}
+                x1={startX}
+                y1={startY}
+                x2={endX}
+                y2={endY}
+                stroke="#3b82f6"
+                strokeWidth="2"
+                strokeDasharray="8,4"
+              />
+            );
+          })}
         </svg>
 
         {/* Orbiting Particles */}
