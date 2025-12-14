@@ -2,10 +2,14 @@
 
 A modern, fully animated 3D donation website focused on supporting dogs and mental health initiatives. Built with Next.js, React Three Fiber, and Framer Motion.
 
+## 🌐 Live Website
+
+**Visit the live website:** [https://jagrik-foundation-website.vercel.app](https://jagrik-foundation-website.vercel.app)
+
 ## Features
 
 - 🎨 **Modern UI/UX** - Beautiful, professional design with smooth animations
-- 🐕 **3D Animations** - Interactive 3D dog model using React Three Fiber
+- ✨ **Interactive Visuals** - Elegant animated visual components with floating icons
 - 📱 **Fully Responsive** - Optimized for all devices and screen sizes
 - ✨ **Smooth Animations** - Powered by Framer Motion and GSAP
 - 💳 **Donation Interface** - User-friendly donation form with preset amounts
@@ -73,8 +77,8 @@ vercel
 │   └── globals.css      # Global styles
 ├── components/
 │   ├── Navigation.tsx   # Header navigation
-│   ├── Hero.tsx         # Hero section with 3D dog
-│   ├── Dog3D.tsx        # 3D animated dog component
+│   ├── Hero.tsx         # Hero section with visual component
+│   ├── EnhancedVisual.tsx # Animated visual component with heart and icons
 │   ├── About.tsx        # About/Mission section
 │   ├── Impact.tsx       # Impact statistics
 │   ├── Donation.tsx     # Donation form
