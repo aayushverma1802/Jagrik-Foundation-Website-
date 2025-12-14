@@ -78,13 +78,13 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             Our Mission
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
             At Jagrik Foundation, we believe in the transformative power of
             community support and compassion. Our mission is to support mental
             health through innovative programs, research, and community initiatives
@@ -97,7 +97,7 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -111,7 +111,7 @@ export default function About() {
                   rotateY: 5,
                   transition: { type: "spring", stiffness: 300 }
                 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden group"
+                className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden group"
               >
                 {/* Hover gradient effect */}
                 <motion.div
@@ -119,16 +119,16 @@ export default function About() {
                   initial={false}
                 />
                 <motion.div
-                  className={`${feature.bgColor} w-16 h-16 rounded-full flex items-center justify-center mb-6 relative z-10`}
+                  className={`${feature.bgColor} w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 relative z-10`}
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6, type: "spring" }}
                 >
-                  <Icon className={`w-8 h-8 ${feature.color}`} />
+                  <Icon className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 ${feature.color}`} />
                 </motion.div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 relative z-10">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-4 relative z-10">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed relative z-10">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed relative z-10">
                   {feature.description}
                 </p>
               </motion.div>

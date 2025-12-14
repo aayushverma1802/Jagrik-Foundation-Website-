@@ -40,11 +40,11 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-4"
+            className="flex items-center space-x-2 sm:space-x-4"
           >
-            <div className="flex items-center space-x-2">
-              <Heart className="w-8 h-8 text-primary-600" fill="currentColor" />
-              <span className="text-2xl font-bold text-gray-900">
+            <div className="flex items-center space-x-1 sm:space-x-2">
+              <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary-600" fill="currentColor" />
+              <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
                 Jagrik Foundation
               </span>
             </div>
@@ -52,10 +52,10 @@ export default function Navigation() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-4 py-2 rounded-full"
+              className="hidden sm:inline-flex items-center space-x-2 bg-primary-100 text-primary-700 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full"
             >
-              <Heart className="w-4 h-4" fill="currentColor" />
-              <span className="text-sm font-semibold">Making a Difference</span>
+              <Heart className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" />
+              <span className="text-xs sm:text-sm font-semibold">Making a Difference</span>
             </motion.div>
           </motion.div>
 

@@ -37,13 +37,13 @@ export default function Donation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             Make a Donation
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2 sm:px-0">
             Your contribution helps us train therapy dogs and support mental
             health initiatives. Every dollar makes a difference.
           </p>
@@ -87,7 +87,7 @@ export default function Donation() {
             <label className="block text-sm font-semibold text-gray-700 mb-4">
               Select Amount
             </label>
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
               {presetAmounts.map((amount) => (
                 <motion.button
                   key={amount}
@@ -97,7 +97,7 @@ export default function Donation() {
                     setSelectedAmount(amount);
                     setCustomAmount("");
                   }}
-                  className={`p-4 rounded-xl font-semibold text-lg border-2 transition-all ${
+                  className={`p-3 sm:p-4 rounded-xl font-semibold text-base sm:text-lg border-2 transition-all ${
                     selectedAmount === amount
                       ? "border-primary-600 bg-primary-50 text-primary-600"
                       : "border-gray-200 text-gray-700 hover:border-primary-300"
@@ -126,7 +126,7 @@ export default function Donation() {
                   setSelectedAmount(null);
                 }}
                 placeholder="0.00"
-                className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl text-xl font-semibold focus:border-primary-600 focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl text-lg sm:text-xl font-semibold focus:border-primary-600 focus:outline-none"
               />
             </div>
           </div>

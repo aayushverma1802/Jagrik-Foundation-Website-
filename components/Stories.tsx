@@ -87,15 +87,15 @@ export default function Stories() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-3xl p-8 md:p-12 shadow-2xl"
+              className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl"
             >
-              <div className="flex items-start space-x-6">
-                <div className="text-6xl flex-shrink-0">
+              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                <div className="text-4xl sm:text-5xl md:text-6xl flex-shrink-0">
                   {stories[currentIndex].image}
                 </div>
                 <div className="flex-1">
-                  <Quote className="w-12 h-12 text-primary-600 mb-4" />
-                  <p className="text-xl text-gray-700 leading-relaxed mb-6 italic">
+                  <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-600 mb-3 sm:mb-4" />
+                  <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-4 sm:mb-6 italic px-2 sm:px-0">
                     &ldquo;{stories[currentIndex].quote}&rdquo;
                   </p>
                   <div className="flex items-center space-x-2 mb-4">
@@ -108,10 +108,10 @@ export default function Stories() {
                     ))}
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900 text-lg">
+                    <div className="font-bold text-gray-900 text-base sm:text-lg">
                       {stories[currentIndex].name}
                     </div>
-                    <div className="text-gray-600">
+                    <div className="text-sm sm:text-base text-gray-600">
                       {stories[currentIndex].role}
                     </div>
                   </div>
@@ -123,17 +123,17 @@ export default function Stories() {
           {/* Navigation Buttons */}
           <button
             onClick={prevStory}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all"
+            className="absolute left-0 sm:-left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all z-10"
             aria-label="Previous story"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
           </button>
           <button
             onClick={nextStory}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all"
+            className="absolute right-0 sm:-right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all z-10"
             aria-label="Next story"
           >
-            <ChevronRight className="w-6 h-6 text-gray-700" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
           </button>
 
           {/* Dots Indicator */}
@@ -159,7 +159,7 @@ export default function Stories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 grid md:grid-cols-3 gap-6"
+          className="mt-8 sm:mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
         >
           {[
             {
@@ -181,9 +181,9 @@ export default function Stories() {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center"
+              className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 text-center"
             >
-              <div className="text-4xl font-bold text-primary-600 mb-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-600 mb-2">
                 {item.stat}
               </div>
               <div className="font-semibold text-gray-900 mb-2">

@@ -44,7 +44,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -55,9 +55,9 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2 mb-4">
               <Heart className="w-8 h-8 text-primary-400" fill="currentColor" />
-              <span className="text-2xl font-bold">Jagrik Foundation</span>
+              <span className="text-xl sm:text-2xl font-bold">Jagrik Foundation</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
               Supporting mental health through innovative programs and
               community initiatives. Together, we&apos;re making a difference, one
               life at a time.
@@ -87,7 +87,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <h3 className="text-lg font-semibold mb-4 capitalize">
+              <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 capitalize">
                 {category}
               </h3>
               <ul className="space-y-2">
