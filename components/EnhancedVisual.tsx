@@ -31,12 +31,12 @@ export default function EnhancedVisual() {
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          className="relative z-20"
+          className="relative z-10"
         >
           {/* Main Heart Circle - Simple, No Color Effects - Responsive */}
           <motion.div
             whileHover={{ scale: 1.08 }}
-            className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 flex items-center justify-center"
+            className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 rounded-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 flex items-center justify-center"
           >
             {/* Heart Icon with Enhanced Animation */}
             <motion.div
@@ -51,19 +51,19 @@ export default function EnhancedVisual() {
               }}
               className="relative z-10"
             >
-              <Heart className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 text-white" fill="currentColor" />
+              <Heart className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 text-white" fill="currentColor" />
             </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Four Icons with Enhanced Styling */}
+        {/* Four Icons with Enhanced Styling - On Top of Heart */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          {/* Top Icon - Users - Responsive with Mobile Spacing */}
+          {/* Top Icon - Users - On Top of Heart */}
           <motion.div
             initial={{ scale: 0, opacity: 0, y: -50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-            className="absolute pointer-events-auto"
+            className="absolute pointer-events-auto z-30"
             style={{ 
               top: "calc(50% - clamp(100px, 12vw, 220px))", 
               left: "50%", 
@@ -80,12 +80,12 @@ export default function EnhancedVisual() {
             </motion.div>
           </motion.div>
 
-          {/* Right Icon - TrendingUp - Responsive with Mobile Spacing */}
+          {/* Right Icon - TrendingUp - On Top of Heart */}
           <motion.div
             initial={{ scale: 0, opacity: 0, x: 50 }}
             animate={{ scale: 1, opacity: 1, x: 0 }}
             transition={{ delay: 1.0, type: "spring", stiffness: 200 }}
-            className="absolute pointer-events-auto"
+            className="absolute pointer-events-auto z-30"
             style={{ 
               top: "50%", 
               right: "calc(50% - clamp(100px, 12vw, 220px))", 
@@ -102,12 +102,12 @@ export default function EnhancedVisual() {
             </motion.div>
           </motion.div>
 
-          {/* Bottom Icon - Award - Responsive with Mobile Spacing */}
+          {/* Bottom Icon - Award - On Top of Heart */}
           <motion.div
             initial={{ scale: 0, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
-            className="absolute pointer-events-auto"
+            className="absolute pointer-events-auto z-30"
             style={{ 
               bottom: "calc(50% - clamp(100px, 12vw, 220px))", 
               left: "50%", 
@@ -124,12 +124,12 @@ export default function EnhancedVisual() {
             </motion.div>
           </motion.div>
 
-          {/* Left Icon - Target - Responsive with Mobile Spacing */}
+          {/* Left Icon - Target - On Top of Heart */}
           <motion.div
             initial={{ scale: 0, opacity: 0, x: -50 }}
             animate={{ scale: 1, opacity: 1, x: 0 }}
             transition={{ delay: 1.4, type: "spring", stiffness: 200 }}
-            className="absolute pointer-events-auto"
+            className="absolute pointer-events-auto z-30"
             style={{ 
               top: "50%", 
               left: "calc(50% - clamp(100px, 12vw, 220px))", 
