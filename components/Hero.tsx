@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Heart, Shield } from "lucide-react";
-import Abstract3D from "./Abstract3D";
+import ProfessionalVisual from "./ProfessionalVisual";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -148,14 +148,14 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right 3D Abstract Scene */}
+          {/* Right Professional Visual */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-[400px] sm:h-[500px] lg:h-[600px] mt-8 lg:mt-0"
           >
-            <Abstract3D />
+            <ProfessionalVisual />
           </motion.div>
         </div>
       </div>
