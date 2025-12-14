@@ -128,21 +128,20 @@ export default function EnhancedVisual() {
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Floating Icons with Perfect Circular Alignment */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+        {/* Enhanced Floating Icons with Perfect Circular Alignment - No Overlap */}
+        <div
           className="absolute inset-0 flex items-center justify-center"
+          style={{ width: "100%", height: "100%", position: "relative" }}
         >
           {[
-            { icon: Users, angle: 0, delay: 0 },      // Top (12 o'clock)
-            { icon: TrendingUp, angle: 90, delay: 0.2 },   // Right (3 o'clock)
-            { icon: Award, angle: 180, delay: 0.4 },      // Bottom (6 o'clock)
-            { icon: Target, angle: 270, delay: 0.6 },      // Left (9 o'clock)
+            { icon: Users, angle: -90, delay: 0 },      // Top (12 o'clock)
+            { icon: TrendingUp, angle: 0, delay: 0.2 },   // Right (3 o'clock)
+            { icon: Award, angle: 90, delay: 0.4 },      // Bottom (6 o'clock)
+            { icon: Target, angle: 180, delay: 0.6 },      // Left (9 o'clock)
           ].map((item, index) => {
             const Icon = item.icon;
-            const radius = 140; // Distance from center
+            // Increased radius to prevent overlap - 150px from center (icon is 80px, so total space is 190px radius)
+            const radius = 150;
             const angleRad = (item.angle * Math.PI) / 180;
             const x = Math.cos(angleRad) * radius;
             const y = Math.sin(angleRad) * radius;
@@ -163,13 +162,15 @@ export default function EnhancedVisual() {
                   left: "50%",
                   top: "50%",
                   transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                  zIndex: 10,
+                  width: "80px",
+                  height: "80px",
                 }}
               >
                 <motion.div
                   whileHover={{ scale: 1.15, rotate: 5 }}
                   animate={{
-                    y: [0, -10, 0],
-                    x: [0, 0, 0],
+                    y: [0, -8, 0],
                   }}
                   transition={{
                     duration: 3 + index * 0.5,
@@ -177,7 +178,7 @@ export default function EnhancedVisual() {
                     ease: "easeInOut",
                     delay: index * 0.3,
                   }}
-                  className="bg-white rounded-full p-5 shadow-xl border-2 border-primary-100 hover:border-primary-300 transition-colors cursor-pointer group"
+                  className="bg-white rounded-full shadow-xl border-2 border-primary-100 hover:border-primary-300 transition-colors cursor-pointer group relative w-full h-full flex items-center justify-center"
                 >
                   <Icon className="w-10 h-10 text-primary-600 group-hover:text-primary-700 transition-colors" />
                   
@@ -190,23 +191,31 @@ export default function EnhancedVisual() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Enhanced Connecting Lines with Perfect Alignment */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+          viewBox="0 0 400 400"
+          preserveAspectRatio="xMidYMid meet"
+        >
           {[
-            { angle: 0, delay: 1 },      // Top
-            { angle: 90, delay: 1.2 },   // Right
-            { angle: 180, delay: 1.4 },  // Bottom
-            { angle: 270, delay: 1.6 },  // Left
+            { angle: -90, delay: 1 },      // Top
+            { angle: 0, delay: 1.2 },      // Right
+            { angle: 90, delay: 1.4 },    // Bottom
+            { angle: 180, delay: 1.6 },   // Left
           ].map((line, i) => {
-            const radius = 140;
             const centerRadius = 36; // Half of inner circle (72px / 2)
+            const iconRadius = 150; // Distance to icon center (matches icon positioning)
             const angleRad = (line.angle * Math.PI) / 180;
+            
+            // Start from edge of center circle
             const startX = 200 + Math.cos(angleRad) * centerRadius;
             const startY = 200 + Math.sin(angleRad) * centerRadius;
-            const endX = 200 + Math.cos(angleRad) * radius;
-            const endY = 200 + Math.sin(angleRad) * radius;
+            
+            // End at edge of icon circle (icon is 80px, so 40px radius)
+            const endX = 200 + Math.cos(angleRad) * (iconRadius - 40);
+            const endY = 200 + Math.sin(angleRad) * (iconRadius - 40);
 
             return (
               <motion.line
